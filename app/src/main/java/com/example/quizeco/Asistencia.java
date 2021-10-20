@@ -8,18 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 public class Asistencia extends AppCompatActivity  {
 
     private Button Continuar2;
-
     private RadioButton totalidad, parte, no;
     int puntos = 0;
-    private TextView textView2;
-    private boolean Valor;
     private boolean continuar;
-    private String nombre, id;
 
     SharedPreferences prefs;
 

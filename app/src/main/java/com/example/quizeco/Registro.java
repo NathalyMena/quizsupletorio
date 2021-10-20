@@ -84,21 +84,7 @@ public class Registro extends AppCompatActivity {
 
 
     protected void validacion() {
-        numero = true;
-        if (nombre == null || nombre.isEmpty() || id == null || id.isEmpty()) {
-            Toast.makeText(this, "Hay campos vacíos", Toast.LENGTH_LONG).show();
-            numero = false;
-        } else {
-            for (int i = 0; i < nombre.length(); i++) {
-                if (Character.isDigit(nombre.charAt(i))) {
-                    Toast.makeText(this, "Tienes números en el nombre. Revíselo.", Toast.LENGTH_LONG).show();
-                    nombre = "";
-                    numero = false;
-                } else {
-                    numero = true;
-                }
-            }
-        }
+
         String usuarios = getSharedPreferences("encuesta", MODE_PRIVATE).getString("encuestados", "");
         if (usuarios.contains(id)) {
             Toast.makeText(this, "Esta persona ya fue registrada", Toast.LENGTH_LONG).show();

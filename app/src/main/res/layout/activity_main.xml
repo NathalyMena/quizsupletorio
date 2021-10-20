@@ -31,7 +31,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="202dp"
-        android:text="Estudientes registrados"
+        android:text="Estudiantes registrados"
         android:textColor="#3E3A3A"
         android:textSize="18sp"
         android:textStyle="bold"
