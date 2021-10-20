@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
     private Button Registrar;
     private TextView Registro;
 
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
         Registrar = findViewById(R.id.Registrar);
         Registro = findViewById(R.id.Registro);
+        sharedPreferences = getSharedPreferences("datos",MODE_PRIVATE);
 
-        listaUsuarios();
+
+        MostrarRegistros();
 
         Registrar.setOnClickListener(
                 (v)->{
@@ -32,16 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        listaUsuarios();
-    }
+       public void MostrarRegistros(){
 
-    public void listaUsuarios(){
-        SharedPreferences preferences = getSharedPreferences("encuesta", MODE_PRIVATE);
-        String usuarios = preferences.getString("nombre+calificacion", "No hay encuestados");
-        Registro.setText(usuarios);
+        String registros = sharedPreferences.getString("usuario","");
+
+        Registro.setText(registros);
+
     }
 
 

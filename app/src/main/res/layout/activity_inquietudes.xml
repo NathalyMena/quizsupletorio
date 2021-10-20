@@ -7,40 +7,41 @@
     android:background="#FFFFFF"
     tools:context=".Inquietudes">
 
+
     <Button
-        android:id="@+id/Continuar2"
+        android:id="@+id/Continuar3"
         android:layout_width="329dp"
         android:layout_height="47dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="100dp"
-        android:background="@drawable/boton"
+        android:background="@drawable/boton2"
         android:text="Finalizar"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="315dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginBottom="208dp"
         android:ems="10"
         android:hint="Haz una pregunta"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/Continuar2"
+        app:layout_constraintBottom_toTopOf="@+id/Continuar3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.552"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.981" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="76dp"
         android:layout_marginEnd="202dp"
         android:text="Dudas e inquietudes"
         android:textColor="#3E3A3A"
@@ -57,55 +58,42 @@
         android:layout_marginTop="8dp"
         android:text="Elige la opción que apliquen a tu caso:"
         android:textColor="#2E2929"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.306"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.0" />
 
     <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        android:layout_width="316dp"
+        android:layout_height="153dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.616"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.257">
 
         <RadioButton
-            android:id="@+id/totalidad"
-            android:layout_width="wrap_content"
+            android:id="@+id/teoria"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:text="Pregunta sobre la teoría"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.222"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            android:onClick="Teoria"
+            android:text="Pregunta sobre la teoría" />
 
         <RadioButton
-            android:id="@+id/parte"
-            android:layout_width="wrap_content"
+            android:id="@+id/ejercicios"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pregunta sobre implemtación  de los ejercicios"
-            app:layout_constraintBottom_toTopOf="@+id/no"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.593"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/totalidad"
-            app:layout_constraintVertical_bias="0.333" />
+            android:onClick="Ejercicios"
+            android:text="Pregunta sobre implementación de los ejercicios" />
 
         <RadioButton
-            android:id="@+id/no"
-            android:layout_width="wrap_content"
+            android:id="@+id/enunciado"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="Pregunta sobre el  enunciado  de los ejercicios"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.573"
-            app:layout_constraintStart_toStartOf="parent" />
-
-
+            android:onClick="Enunciado"
+            android:text="Pregunta sobre el enunciado de los ejercicios" />
     </RadioGroup>
 
 

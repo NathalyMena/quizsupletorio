@@ -3,6 +3,7 @@ package com.example.quizeco;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,10 @@ public class Registro extends AppCompatActivity {
     private Button Continuar1;
     private String nombre, id;
     private boolean numero;
+    boolean existe=false;
+
+
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,22 +28,60 @@ public class Registro extends AppCompatActivity {
         Nombre = findViewById(R.id.Nombre);
         ID = findViewById(R.id.ID);
         Continuar1 = findViewById(R.id.Continuar1);
+        sharedPreferences = getSharedPreferences("datos",MODE_PRIVATE);
 
         Continuar1.setOnClickListener(
+
                 (v) -> {
-                    nombre = Nombre.getText().toString();
-                    id = ID.getText().toString();
-                    validacion();
-                    if (numero) {
-                        Intent i = new Intent(this, Asistencia.class);
-                        i.putExtra("nombre", nombre);
-                        i.putExtra("id", id);
-                        startActivity(i);
-                        finish();
+                    String registrosAnteriores = sharedPreferences.getString("codigo", "");
+
+                    String nombre = Nombre.getText().toString();
+                    String codigo = ID.getText().toString();
+
+                    if(nombre.isEmpty()||codigo.isEmpty()){
+
+                        Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show();
+                        return;
                     }
+
+
+                    if (registrosAnteriores != null) {
+
+                        String[] registros;
+                        registros = registrosAnteriores.split(",");
+
+
+                        for (int i = 0; i < registros.length; i++) {
+
+                            if (registros[i].contentEquals(codigo)) {
+
+                                existe = true;
+                                Toast.makeText(this, "ya existe un usario con este codigo", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            else{
+
+
+                                existe=false;
+                            }
+
+                        }
+                    }
+                    if(!existe){
+
+                        sharedPreferences.edit().putString("usuario", sharedPreferences.getString("usuario", "") + nombre).apply();
+                        sharedPreferences.edit().putString("codigo", sharedPreferences.getString("codigo", "") + codigo + ",").apply();
+
+                        Intent intent = new Intent(this, Asistencia.class);
+                        startActivity(intent);
+                        finish();
+
+                    }
+
+                });
+
                 }
-        );
-    }
+
 
     protected void validacion() {
         numero = true;
@@ -48,7 +91,7 @@ public class Registro extends AppCompatActivity {
         } else {
             for (int i = 0; i < nombre.length(); i++) {
                 if (Character.isDigit(nombre.charAt(i))) {
-                    Toast.makeText(this, "El nombre no puede tener números", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Tienes números en el nombre. Revíselo.", Toast.LENGTH_LONG).show();
                     nombre = "";
                     numero = false;
                 } else {
@@ -63,3 +106,5 @@ public class Registro extends AppCompatActivity {
         }
     }
 }
+
+
